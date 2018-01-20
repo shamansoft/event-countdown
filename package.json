@@ -1,0 +1,26 @@
+{
+  "name": "event-countdown",
+  "version": "1.0.0",
+  "description": "REST service to get events dates and init countdown",
+  "main": "handler.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest-cli": "^22.1.1"
+  },
+  "jest":{
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "date",
+    "countdown"
+  ],
+  "author": "alexey khisamutdinov",
+  "license": "MIT"
+}

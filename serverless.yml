@@ -1,0 +1,34 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: event-counter
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs6.10
+  profile: ak-admin
+
+# The `functions` block defines what code to deploy
+functions:
+  plukYear:
+    handler: handler.plukYear
+    timeout: 5
+    events:
+      - http:
+          path: pluk/year/{year}
+          method: get
+          cors: true
+  plukStatus:
+    handler: handler.plukStatus
+    timeout: 7
+    events:
+      - http:
+          path: pluk/status
+          method: get
+          cors: true
