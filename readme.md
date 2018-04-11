@@ -7,7 +7,7 @@ serverless.yml reference https://serverless.com/framework/docs/providers/aws/gui
 
 test
 ```
-$ npm run tests
+$ yarn run test
 ```
 
 deploy

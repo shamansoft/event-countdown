@@ -2,8 +2,7 @@ module.exports = {
     getDay,
     getMonth,
     zeroDate,
-    zeroDateHours,
-    shiftToTZ
+    zeroDateHours
 };
 
 const days = {
@@ -31,10 +30,6 @@ const months = {
     "Dec" : 11
 };
 
-const timezones = {
-    "SAMT" : 4
-}
-
 //month 0..11 or Mmm
 function zeroDate(date, month, year){
     if (typeof date.getMonth === 'function') {
@@ -47,11 +42,6 @@ function zeroDate(date, month, year){
 function zeroDateHours(date, month, year, hours){
     return new Date(Date.UTC(year, getMonth(month), date, hours, 0, 0, 0));
 };
-
-function shiftToTZ(date, tz){
-    date.setUTCHours(date.getUTCHours + ( typeof tz === 'string' ? timezones[tz] : tz));
-    return date;
-}
 
 function getDay(str){
     return typeof str === 'string' ? days[str] : str;
