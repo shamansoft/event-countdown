@@ -1,9 +1,4 @@
-module.exports = {
-    lastDayOfWeek,
-    timeDifference
-};
-
-const timeHelper = require('./time');
+import * as timeHelper from './time.js'
 
 //month Mmm (Jan)
 //dayOfWeek Dd (Fr)
@@ -31,4 +26,9 @@ function timeDifference(startDate, endDate){
         years: Math.floor(abs/(1000*60*60*24*365)),
         inverted : msDiff < 0
     }
+}
+
+export {
+    lastDayOfWeek,
+    timeDifference
 }

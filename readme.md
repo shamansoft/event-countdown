@@ -1,16 +1,17 @@
-install serverless framework
+# Event Date Countdown 
 
-```
-npm install -g serverless
-```
-serverless.yml reference https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+## Pluk Countdown
 
-test
+This should be a ReactJS webapp deployed somewhere
+
+## Local Development
+
+### Run Dev Server
 ```
-$ yarn run test
+yarn start
 ```
 
-deploy
+### Run Tests
 ```
-$ sls deploy
+yarn test
 ```

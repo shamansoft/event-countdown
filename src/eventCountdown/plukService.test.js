@@ -1,6 +1,18 @@
-const helper = require('./time');
-const sut = require('./plukService');
+import * as helper from './time.js';
+import * as sut from './plukService.js';
 
+test('pluk 2030', () => {
+  const expectedDate = helper.zeroDateHours(27,"Jun",2030,4);
+  expect(sut.getForYear(2030).startDate.toISOString()).toBe(expectedDate.toISOString());
+});
+test('pluk 2024', () => {
+  const expectedDate = helper.zeroDateHours(27,"Jun",2024,4);
+  expect(sut.getForYear(2024).startDate.toISOString()).toBe(expectedDate.toISOString());
+});
+test('pluk 2021', () => {
+  const expectedDate = helper.zeroDateHours(24,"Jun",2021,4);
+  expect(sut.getForYear(2021).startDate.toISOString()).toBe(expectedDate.toISOString());
+});
 test('pluk 2019', () => {
   const expectedDate = helper.zeroDateHours(27,"Jun",2019,4);
   expect(sut.getForYear(2019).startDate.toISOString()).toBe(expectedDate.toISOString());
@@ -12,10 +24,6 @@ test('pluk 2018', () => {
 test('pluk 2017', () => {
   const expectedDate = helper.zeroDateHours(22,"Jun",2017,4);
   expect(sut.getForYear(2017).startDate.toISOString()).toBe(expectedDate.toISOString());
-});
-test('pluk 2014', () => {
-  const expectedDate = helper.zeroDateHours(26,"Jun",2014,4);
-  expect(sut.getForYear(2014).startDate.toISOString()).toBe(expectedDate.toISOString());
 });
 test('pluk 2014', () => {
   const expectedDate = helper.zeroDateHours(26,"Jun",2014,4);

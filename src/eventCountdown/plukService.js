@@ -1,12 +1,5 @@
-module.exports = {
-    // status,
-    // getNext,
-    getForYear
-    ,getStatus
-}
-
-const dofs = require('./dayOfWeekService');
-const timeHelper = require('./time');
+import * as timeHelper from './time.js';
+import * as dofs from './dayOfWeekService.js';
 
 function getForYear(year){
     let duration = 4;
@@ -60,4 +53,9 @@ function getStatus(forDate){
             }            
         }
     }
+}
+
+export {
+    getForYear,
+    getStatus
 }
