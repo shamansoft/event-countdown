@@ -5,8 +5,8 @@ import * as timeHelper from './time.js'
 function lastDayOfWeek(year, month, dayOfWeek) {
     month = timeHelper.getMonth(month);
     dayOfWeek = timeHelper.getDay(dayOfWeek);
-    var lastDateOfMonth = timeHelper.zeroDate(0, month + 1, year); 
-    var date = lastDateOfMonth.getUTCDate() - lastDateOfMonth.getUTCDay() + dayOfWeek;
+    const lastDateOfMonth = timeHelper.zeroDate(0, month + 1, year); 
+    let date = lastDateOfMonth.getUTCDate() - lastDateOfMonth.getUTCDay() + dayOfWeek;
     if(date > lastDateOfMonth.getUTCDate()){
         date = date - 7;
     }
@@ -14,8 +14,8 @@ function lastDayOfWeek(year, month, dayOfWeek) {
 }
 
 function timeDifference(startDate, endDate){
-    var msDiff = endDate.getTime() - startDate.getTime();
-    var abs = Math.abs(msDiff);
+    const msDiff = endDate.getTime() - startDate.getTime();
+    const abs = Math.abs(msDiff);
     return {
         ms : abs,
         seconds: Math.floor(abs/1000),

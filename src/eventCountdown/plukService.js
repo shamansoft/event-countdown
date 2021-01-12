@@ -2,21 +2,23 @@ import * as timeHelper from './time.js';
 import * as dofs from './dayOfWeekService.js';
 import {daysRu} from './ruLiteracy.js'
 
+const SMT_OFFSET = -4;
+const P_DURATION = 4;
+
 function getForYear(year){
-    let duration = 4;
     //get last full weekend of June
-    var endDate = dofs.lastDayOfWeek(year, 'Jun', 'Su');  
+    const endDate = dofs.lastDayOfWeek(year, 'Jun', 'Su');  
     //set to Thursday 
-    var startDate = timeHelper.zeroDate(endDate);
-    startDate.setDate(startDate.getUTCDate() - (duration - 1));
+    const startDate = timeHelper.zeroDate(endDate);
+    startDate.setDate(startDate.getUTCDate() - (P_DURATION - 1));
     //Set SAMT offset and 7:00
-    startDate.setUTCHours(7-4);
+    startDate.setUTCHours(7+SMT_OFFSET);
     //Set SAMT offset and 19:00
-    endDate.setUTCHours(19-4);
+    endDate.setUTCHours(19+SMT_OFFSET);
     return {
         "startDate" : startDate,
         "endDate" : endDate,
-        "duration" : duration
+        "duration" : P_DURATION
     };
 }
 

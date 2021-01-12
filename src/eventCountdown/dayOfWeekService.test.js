@@ -96,27 +96,6 @@ test('last sat of sep 2018 is 2018-09-29', () => {
   expect(sut.lastDayOfWeek(2018,"Sep","Sa").toString()).toBe(expectedDate.toString());
 });
 
-describe('dayOfWeekService', () => {
-  describe('#lastDayOfWeek', () => {
-    // const randomNumber = 0.123;
-    // let limit = 23;
-    // let mathRandomBackup;
-
-    beforeEach(() => {
-    //   mathRandomBackup = Math.random;
-    //   jest.resetAllMocks();
-    //   jest.spyOn(Math, 'random').mockImplementation();
-    //   Math.random.mockReturnValue(randomNumber);
-    });
-
-    afterEach(() => {
-    //   Math.random = mathRandomBackup;
-    });
-
-
-  });
-});
-
 // time difference
 
 test('0 days', () => {

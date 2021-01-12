@@ -8,7 +8,7 @@ source "$DIRECTORY/secrets.config"
 eval "yarn build"
 
 # 2. copy to S3
-command="aws s3 sync ./build s3://$path --profile $profile --region eu-central-1 --dryrun"
+command="aws s3 sync ./build s3://$path --profile $profile --region eu-central-1"
 
 echo "running $command"
 eval $command
