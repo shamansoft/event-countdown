@@ -39,6 +39,9 @@ function App() {
   return (
     <div className="App">
       {message}
+      <footer className="copyright">
+          Shamansoft&copy; Плюк 2.0
+      </footer>
     </div>
   );
 }
