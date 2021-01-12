@@ -1,5 +1,6 @@
 import * as timeHelper from './time.js';
 import * as dofs from './dayOfWeekService.js';
+import {daysRu} from './ruLiteracy.js'
 
 function getForYear(year){
     let duration = 4;
@@ -8,10 +9,10 @@ function getForYear(year){
     //set to Thursday 
     var startDate = timeHelper.zeroDate(endDate);
     startDate.setDate(startDate.getUTCDate() - (duration - 1));
-    //Set SAMT offset
-    startDate.setUTCHours(4);
+    //Set SAMT offset and 7:00
+    startDate.setUTCHours(7-4);
     //Set SAMT offset and 19:00
-    endDate.setUTCHours(4+19);
+    endDate.setUTCHours(19-4);
     return {
         "startDate" : startDate,
         "endDate" : endDate,
@@ -20,37 +21,50 @@ function getForYear(year){
 }
 
 function getStatus(forDate){
-    let dYear = forDate.getUTCFullYear();
+    const dYear = forDate.getUTCFullYear();
     let pDates = getForYear(dYear);
-    // console.log(zeroForDate);
-    // console.log(pDates);
-    let status = forDate.getTime() < pDates.startDate.getTime() ? "thisYear" 
+    const status = forDate.getTime() < pDates.startDate.getTime() ? "thisYear" 
         : (forDate.getTime() <= pDates.endDate.getTime() ? "inProgress" : "nextYear");
     switch (status) {
         case "thisYear" : {
+            const daysLeft = dofs.timeDifference(forDate, pDates.startDate).days;
             return {
                 "startDate" : pDates.startDate,
                 "endDate" : pDates.endDate,
                 "status" : status,
-                "daysLeft" : dofs.timeDifference(forDate, pDates.startDate).days
+                "daysLeft" : daysLeft,
+                "ruDays": daysRu(daysLeft),
             }
         }
         case "inProgress" : {
+            const daysLeft = 0;
             return {
                 "startDate" : pDates.startDate,
                 "endDate" : pDates.endDate,
                 "status" : status,
-                "daysLeft" : 0,
+                "daysLeft" : daysLeft,
+                "ruDays": daysRu(daysLeft)
             }            
         }
         case "nextYear" : {
             pDates = getForYear(dYear + 1);
+            const daysLeft = dofs.timeDifference(forDate, pDates.startDate).days;
             return {
                 "startDate" : pDates.startDate,
                 "endDate" : pDates.endDate,
                 "status" : status,
-                "daysLeft" : dofs.timeDifference(forDate, pDates.startDate).days
+                "daysLeft" : daysLeft,
+                "ruDays": daysRu(daysLeft),
             }            
+        }
+        default : {
+            return {
+                "startDate" : pDates.startDate,
+                "endDate" : pDates.endDate,
+                "status" : "UNKNOWN",
+                "daysLeft" : 0,
+                "ruDays": daysRu(0),
+            };
         }
     }
 }
