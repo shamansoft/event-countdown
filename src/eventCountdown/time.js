@@ -1,10 +1,3 @@
-module.exports = {
-    getDay,
-    getMonth,
-    zeroDate,
-    zeroDateHours
-};
-
 const days = {
     "Mo" : 1,
     "Tu" : 2,
@@ -50,3 +43,10 @@ function getDay(str){
 function getMonth(str){
     return typeof str === 'string' ? months[str] : str;
 };
+
+export {
+    zeroDate,
+    zeroDateHours,
+    getDay,
+    getMonth
+}

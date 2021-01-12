@@ -1,5 +1,5 @@
-const sut = require('./dayOfWeekService');
-const time = require('./time');
+import * as time from './time.js';
+import * as sut from './dayOfWeekService.js';
 
 // test feb 18
 test('last thu of feb 2018 is 2018-02-22', () => {
@@ -94,27 +94,6 @@ test('last wed of sep 2018 is 2018-09-26', () => {
 test('last sat of sep 2018 is 2018-09-29', () => {
   const expectedDate = time.zeroDate(29,"Sep",2018);
   expect(sut.lastDayOfWeek(2018,"Sep","Sa").toString()).toBe(expectedDate.toString());
-});
-
-describe('dayOfWeekService', () => {
-  describe('#lastDayOfWeek', () => {
-    // const randomNumber = 0.123;
-    // let limit = 23;
-    // let mathRandomBackup;
-
-    beforeEach(() => {
-    //   mathRandomBackup = Math.random;
-    //   jest.resetAllMocks();
-    //   jest.spyOn(Math, 'random').mockImplementation();
-    //   Math.random.mockReturnValue(randomNumber);
-    });
-
-    afterEach(() => {
-    //   Math.random = mathRandomBackup;
-    });
-
-
-  });
 });
 
 // time difference
@@ -214,54 +193,3 @@ test('1 month june', () => {
   }
   expect(sut.timeDifference(startDate, endDate)).toEqual(expected);
 });
-
-// describe('dayOfWeekService', () => {
-//   describe('#lastDayOfWeek', () => {
-//     // const randomNumber = 0.123;
-//     // let limit = 23;
-//     // let mathRandomBackup;
-
-//     beforeEach(() => {
-//     //   mathRandomBackup = Math.random;
-//     //   jest.resetAllMocks();
-//     //   jest.spyOn(Math, 'random').mockImplementation();
-//     //   Math.random.mockReturnValue(randomNumber);
-//     });
-
-//     afterEach(() => {
-//     //   Math.random = mathRandomBackup;
-//     });
-
-//     test('last tue of 2018 is 2018-01-30', () => {
-//       const tue_30_jan_18 = time.zeroDate(30,1,2018);
-//       expect(sut.lastDayOfWeek(2018,1,2)).toBe(tue_30_jan_18);
-//     });
-
-//     // test('accepts a Number as a salt', () => {
-//     //   const aSalt = 13;
-//     //   const anotherSalt = aSalt + 17;
-//     //   expect(sut.upTo(limit, aSalt)).not.toBe(sut.upTo(limit, anotherSalt));
-//     // });
-
-//     // test('uses salt to randomize', () => {
-//     //   const aSalt = 'some text';
-//     //   const anotherSalt = `another${aSalt}`;
-//     //   expect(sut.upTo(limit, aSalt)).not.toBe(sut.upTo(limit, anotherSalt));
-//     // });
-
-//     // test('returns value in the range when no salt', () => {
-//     //   expect(sut.upTo(limit)).toEqual(Math.floor(randomNumber * limit));
-//     // });
-
-//     // test('returns 0 when 0', () => {
-//     //   limit = 0;
-//     //   expect(sut.upTo(limit)).toEqual(0);
-//     // });
-
-//     // test('returns limit when random returned maximum', () => {
-//     //   const maxRandomNumber = 1;
-//     //   Math.random.mockReturnValue(maxRandomNumber);
-//     //   expect(sut.upTo(limit)).toEqual(limit);
-//     // });
-//   });
-// });
