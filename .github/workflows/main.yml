@@ -23,6 +23,7 @@ jobs:
       - name: Test React App
         run: npm install && npm run test
   deploy:
+    if: github.event = 'push'
     needs: [test]
     environment: prod
     runs-on: ubuntu-latest
