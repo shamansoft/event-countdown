@@ -6,7 +6,7 @@ name: S3 Deploy
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master, deploy]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build React App
+      - name: Test React App
         run: npm install && npm run test
   deploy:
     needs: [test]
@@ -37,4 +37,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy app build to S3 bucket
-        run: aws s3 sync ./build s3://${{ secrets.S3_BUCKET }} --delete --dryrun
+        run: aws s3 sync ./build s3://${{ secrets.S3_BUCKET }} --delete
