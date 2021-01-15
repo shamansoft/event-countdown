@@ -36,3 +36,12 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy app build to S3 bucket
         run: aws s3 sync ./build s3://${{ secrets.S3_BUCKET }} --delete
+      - name: Deploy app build to Reg.ru
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: 'u0078977'
+          server: '31.31.198.226'
+          ssh_private_key: ${{ secrets.REG_RU_PRIVATE_KEY }} 
+          local_path: './static/*'
+          remote_path: '/var/www/u0078977/pluk.shamansoft.ru'
+          args: '-o ConnectTimeout=5'
