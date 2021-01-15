@@ -40,8 +40,8 @@ jobs:
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: 'u0078977'
-          server: '31.31.198.226'
+          server: '${{ secrets.SERVER_IP }}'
           ssh_private_key: ${{ secrets.REG_RU_PRIVATE_KEY }} 
-          local_path: './static/*'
+          local_path: './build/*'
           remote_path: '/var/www/u0078977/pluk.shamansoft.ru'
           args: '-o ConnectTimeout=5'
