@@ -12,9 +12,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-.App-header {
+body {
   background-color: #282c34;
+}
+.App-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,8 +25,38 @@
   color: white;
 }
 
+.App-section h1 {
+  font-weight: bolder;
+  font-size: 200px;
+  margin: 0;
+}
+
+.App-section p strong{
+  font-weight: bolder;
+}
+
+.App-section p.days-ext span{
+  font-weight: bolder;
+  font-family: monospace;
+  color: yellow;
+  background-color: blue;
+  padding: 10px;
+  margin-right: 20px;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+header {
+  font-size: 12px;
+  text-align: right;
+  padding: 10px;
+  color:gray;
+}
+
+header p {
+  margin: 0;
 }
 
 footer.copyright {
@@ -36,6 +67,7 @@ footer.copyright {
   left: 0;
   color: gray;
   text-align: left;
+  padding: 3px;
 }
 
 @keyframes App-logo-spin {

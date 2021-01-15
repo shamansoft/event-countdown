@@ -3,29 +3,41 @@ import './App.css';
 
 function WaitForP(pStatus) {
   return (
-    <header className="App-header">
-      <p>
-        Плюк будет {pStatus.startDate.toLocaleString("ru-ru", {timeZone: "Europe/Samara"})}
-      </p>
-      <p>
-        Ждать осталось {pStatus.daysLeft} {pStatus.ruDays}
+    <section className="App-section">
+      <h1>
+        {pStatus.daysLeft}
+      </h1>        
+      <p className="days-ext">
+        <span className="days-bin">{pStatus.daysLeft.toString(2)}</span>
+        <span className="days-hex">{pStatus.daysLeft.toString(16)}</span>
       </p>        
-      <p>
-        {pStatus.daysLeft.toString(2)}/bin | {pStatus.daysLeft.toString(16)}/hex
-      </p>        
-    </header>
+    </section>
   )
 }
 
 function GoForP(pStatus) {
   return (
-    <header className="App-header">
+    <section className="App-section">
+      <h1>
+        Плюк закончится <strong>{pStatus.endDate.toLocaleString("ru-ru", {timeZone: "Europe/Samara"})}</strong>
+      </h1>
       <p>
-        Плюк закончится {pStatus.endDate.toLocaleString("ru-ru", {timeZone: "Europe/Samara"})}
+        Ещё есть время! БХЗянин, собирай шмотки и бегом на электричку!
+      </p>         
+    </section>
+  )
+}
+
+function PHeader(pStatus) {
+  const pMsg = pStatus.status === "inProgress" ? "уже идёт" : `начнётся через ${pStatus.daysLeft} ${pStatus.ruDays}`;
+  return (
+    <header>
+      <p>
+        Плюк {pStatus.startDate.getFullYear()} {pMsg}
       </p>
       <p>
-        Ещё есть время! Собирай шмотки и бегом на электричку!
-      </p>         
+        Начало {pStatus.startDate.toLocaleString("ru-ru", {timeZone: "Europe/Samara"})} 
+      </p>
     </header>
   )
 }
@@ -38,6 +50,7 @@ function App() {
   const message = pStatus.status === "inProgress" ? <GoForP {...pStatus} /> : <WaitForP {...pStatus}/> 
   return (
     <div className="App">
+      <PHeader {...pStatus} />
       {message}
       <footer className="copyright">
           Shamansoft&copy; Плюк 2.0
